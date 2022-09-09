@@ -96,7 +96,7 @@ function loadEventListeners() {
         if (forAttr) {
           console.log(forAttr);
           const audio = new Audio(
-            `../assets/audio/${forAttr}.wav`
+            `/assets/audio/${forAttr}.wav`
           );
           audio.addEventListener("canplaythrough", (event) => {
             /* the audio is now playable; play it if permissions allow */
@@ -107,7 +107,7 @@ function loadEventListeners() {
         //tengo que apuntar al elemento padre para obtener su atributo for
           const forAttr = e.target.parentElement.getAttribute("for");
           const audio = new Audio(
-            `../assets/audio/${forAttr}.wav`
+            `/assets/audio/${forAttr}.wav`
           );
           audio.addEventListener("canplaythrough", (event) => {
             /* the audio is now playable; play it if permissions allow */
