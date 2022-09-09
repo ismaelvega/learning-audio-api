@@ -96,7 +96,7 @@ function loadEventListeners() {
         if (forAttr) {
           console.log(forAttr);
           const audio = new Audio(
-            `/programar/mokepon/assets/audio/${forAttr}.wav`
+            `../assets/audio/${forAttr}.wav`
           );
           audio.addEventListener("canplaythrough", (event) => {
             /* the audio is now playable; play it if permissions allow */
