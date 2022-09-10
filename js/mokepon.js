@@ -88,33 +88,22 @@ mokepones.push(hipodoge, capipepo, ratigueya);
 function loadEventListeners() {
     //Agrega eventListener de tipo click a cada uno de los mokepones
   Object.values(document.querySelectorAll(".tarjeta-de-mokepon")).forEach(
-    (tarjeta) =>
-      tarjeta.addEventListener("click", (e) => {
-        //Reproduce el archivo de audio que coincida con el atributo for en <label>
-        // OJO. Tanto el nombre del archivo como el atributo for deben coincidir.
-        const forAttr = e.target.getAttribute("for");
-        if (forAttr) {
-          console.log(forAttr);
-          const audio = new Audio(
-            `/assets/audio/${forAttr}.wav`
-          );
-          audio.addEventListener("canplaythrough", (event) => {
-            /* the audio is now playable; play it if permissions allow */
-            audio.play();
-          });
+    (tarjeta) => {
+      //Reproduce el archivo de audio que coincida con el atributo for en <label>
+      // OJO. Tanto el nombre del archivo como el atributo for deben coincidir.
+      const forAttr = tarjeta.getAttribute('for')
+      const audio = new Audio(
+        `/assets/audio/${forAttr}.wav`
+      );
+
+      tarjeta.addEventListener("click", () => {
+        if(audio.paused === false){
+          console.log('reproduciendo');
         } else {
-        //Algunos clicks van a ser en elementos hijos dentro de <label>. En caso de que fuera así
-        //tengo que apuntar al elemento padre para obtener su atributo for
-          const forAttr = e.target.parentElement.getAttribute("for");
-          const audio = new Audio(
-            `/assets/audio/${forAttr}.wav`
-          );
-          audio.addEventListener("canplaythrough", (event) => {
-            /* the audio is now playable; play it if permissions allow */
-            audio.play();
-          });
+          audio.play()
         }
       })
+    }
   );
 }
 
